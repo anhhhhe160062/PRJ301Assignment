@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Customer Management</h1>
+        <jsp:include page="Menu.jsp"/>
     </body>
 </html>

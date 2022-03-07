@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Controller;
 
+import DAL.AccountDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hai Anh
  */
-public class LoginServlet extends HttpServlet {
+public class AccountListController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,19 +30,15 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String u = request.getParameter("user");
-        String p = request.getParameter("pass");
+        AccountDAO accountdb = new AccountDAO();
+        ArrayList list = accountdb.getAll();
 
-//        String userName = getInitParameter("user");
-//        String passWord = getInitParameter("pass");
-        String userName = "abcd";
-        String passWord = "123456";
-
-        if (u.equals(userName) && p.equals(passWord)) {
-            request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("index.html");
-        }
+//        PrintWriter out = response.getWriter();
+//        for(int i = 0; i < list.size(); i++){
+//            out.println(list.get(i));
+//        }
+        request.setAttribute("accountList", list);
+        request.getRequestDispatcher("AdminManagement.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

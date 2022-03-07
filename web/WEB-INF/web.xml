@@ -2,11 +2,35 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>LoginServlet</servlet-class>
+        <servlet-class>Controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>abcd</servlet-name>
+        <servlet-class>Controller.abcd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccountListServlet</servlet-name>
+        <servlet-class>Controller.AccountListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddAccountController</servlet-name>
+        <servlet-class>Controller.AddAccountController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>abcd</servlet-name>
+        <url-pattern>/abcd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountListServlet</servlet-name>
+        <url-pattern>/AccountListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddAccountController</servlet-name>
+        <url-pattern>/AddAccountController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
