@@ -57,3 +57,4 @@
             window.location.href = 'UpdateCustomerController?id=' + id;
         }
     </script>
+</html>

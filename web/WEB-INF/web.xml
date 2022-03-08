@@ -44,6 +44,22 @@
         <servlet-name>UpdateCustomerController</servlet-name>
         <servlet-class>CustomerManagement.UpdateCustomerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddPurchaseController</servlet-name>
+        <servlet-class>PurchaseController.AddPurchaseController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PurchaseListController</servlet-name>
+        <servlet-class>PurchaseController.PurchaseListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePurchaseController</servlet-name>
+        <servlet-class>PurchaseController.DeletePurchaseController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePurchaseController</servlet-name>
+        <servlet-class>PurchaseController.UpdatePurchaseController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -87,6 +103,22 @@
     <servlet-mapping>
         <servlet-name>UpdateCustomerController</servlet-name>
         <url-pattern>/UpdateCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPurchaseController</servlet-name>
+        <url-pattern>/AddPurchaseController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PurchaseListController</servlet-name>
+        <url-pattern>/PurchaseListController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePurchaseController</servlet-name>
+        <url-pattern>/DeletePurchaseController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePurchaseController</servlet-name>
+        <url-pattern>/UpdatePurchaseController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
