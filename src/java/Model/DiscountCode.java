@@ -26,6 +26,13 @@ public class DiscountCode {
         this.status = status;
     }
 
+    public DiscountCode(String discountContent, Date startDate, Date endDate, boolean status) {
+        this.discountContent = discountContent;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+    }
+
     public DiscountCode() {
     }
 

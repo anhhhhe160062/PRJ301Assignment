@@ -60,6 +60,22 @@
         <servlet-name>UpdatePurchaseController</servlet-name>
         <servlet-class>PurchaseController.UpdatePurchaseController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddDiscountCodeController</servlet-name>
+        <servlet-class>DiscountCodeController.AddDiscountCodeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateDiscountCodeController</servlet-name>
+        <servlet-class>DiscountCodeController.UpdateDiscountCodeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDiscountCodeController</servlet-name>
+        <servlet-class>DiscountCodeController.DeleteDiscountCodeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DiscountCodeListController</servlet-name>
+        <servlet-class>DiscountCodeController.DiscountCodeListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -119,6 +135,22 @@
     <servlet-mapping>
         <servlet-name>UpdatePurchaseController</servlet-name>
         <url-pattern>/UpdatePurchaseController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDiscountCodeController</servlet-name>
+        <url-pattern>/AddDiscountCodeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateDiscountCodeController</servlet-name>
+        <url-pattern>/UpdateDiscountCodeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDiscountCodeController</servlet-name>
+        <url-pattern>/DeleteDiscountCodeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DiscountCodeListController</servlet-name>
+        <url-pattern>/DiscountCodeListController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
