@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package AccountController;
 
 import DAL.AccountDAO;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hai Anh
  */
-public class AccountListController extends HttpServlet {
+public class DeleteAccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,15 +30,10 @@ public class AccountListController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDAO accountdb = new AccountDAO();
-        ArrayList list = accountdb.getAll();
-
-//        PrintWriter out = response.getWriter();
-//        for(int i = 0; i < list.size(); i++){
-//            out.println(list.get(i));
-//        }
-        request.setAttribute("accountList", list);
-        request.getRequestDispatcher("AdminManagement.jsp").forward(request, response);
+        String id = request.getParameter("id");
+        AccountDAO db = new AccountDAO();
+        db.deleteAccount(Integer.parseInt(id));
+        response.sendRedirect("AccountListServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

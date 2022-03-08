@@ -10,11 +10,19 @@
     </servlet>
     <servlet>
         <servlet-name>AccountListServlet</servlet-name>
-        <servlet-class>Controller.AccountListController</servlet-class>
+        <servlet-class>AccountController.AccountListController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddAccountController</servlet-name>
-        <servlet-class>Controller.AddAccountController</servlet-class>
+        <servlet-class>AccountController.AddAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteAccountController</servlet-name>
+        <servlet-class>AccountController.DeleteAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateAccountController</servlet-name>
+        <servlet-class>AccountController.UpdateAccountController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>AddAccountController</servlet-name>
         <url-pattern>/AddAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAccountController</servlet-name>
+        <url-pattern>/DeleteAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAccountController</servlet-name>
+        <url-pattern>/UpdateAccountController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

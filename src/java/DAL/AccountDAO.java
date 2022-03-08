@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Hai Anh
  */
-public class AccountDAO extends BaseDAO{
+public class AccountDAO extends BaseDAO {
 
     @Override
     public ArrayList<Account> getAll() {
@@ -49,9 +49,9 @@ public class AccountDAO extends BaseDAO{
         }
         return accounts;
     }
-    
-    public void insertAccount(Account a){
-        try{
+
+    public void insertAccount(Account a) {
+        try {
             String sql = "INSERT INTO Account\n"
                     + "     VALUES\n"
                     + "     (?\n"
@@ -68,26 +68,62 @@ public class AccountDAO extends BaseDAO{
             statement.setBoolean(5, a.isGender());
             statement.setDate(6, a.getDOB());
             statement.executeUpdate();
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-//        public void insertStudent(Student s) {
-//        try {
-//            String sql = "INSERT INTO Student\n"
-//                    + "     VALUES\n"
-//                    + "           (?\n"
-//                    + "           ,?\n"
-//                    + "           ,?)";
-//            PreparedStatement statement = connection.prepareStatement(sql);
-//            statement.setString(1, s.getName());
-//            statement.setBoolean(2, s.isGender());
-//            statement.setDate(3, s.getDOB());
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+
+    public void updateAccount(Account a) {
+        try {
+            String sql = "UPDATE Account SET "
+                    + "UserName = ?,\n"
+                    + "Password = ?,\n"
+                    + "Role = ?,\n"
+                    + "Name = ?,\n"
+                    + "Gender = ?,\n"
+                    + "DOB = ?\n"
+                    + "WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, a.getUserName());
+            statement.setString(2, a.getPassword());
+            statement.setString(3, a.getRole());
+            statement.setString(4, a.getName());
+            statement.setBoolean(5, a.isGender());
+            statement.setDate(6, a.getDOB());
+            statement.setInt(7, a.getId());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Account getAccount(int id) {
+        try {
+            String sql = "SELECT *\n"
+                    + "FROM Account\n"
+                    + "WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                Account a = new Account(rs.getInt("id"), rs.getString("UserName"), rs.getString("Password"), rs.getString("Role"), rs.getString("Name"), rs.getBoolean("Gender"), rs.getDate("DOB"));
+                return a;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void deleteAccount(int id) {
+        try {
+            String sql = "DELETE Account WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

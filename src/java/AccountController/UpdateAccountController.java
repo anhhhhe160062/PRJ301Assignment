@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package AccountController;
 
 import DAL.AccountDAO;
 import Model.Account;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hai Anh
  */
-public class AddAccountController extends HttpServlet {
+public class UpdateAccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,22 +33,6 @@ public class AddAccountController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String userName = request.getParameter("userName");
-        String Password = request.getParameter("Password");
-        String Role = request.getParameter("Role");
-        String Name = request.getParameter("Name");
-        String Gender = request.getParameter("Gender");
-        String DOB = request.getParameter("DOB");
-
-        Date date = java.sql.Date.valueOf(DOB);
-
-        AccountDAO db = new AccountDAO();
-        Account a = new Account(userName, Password, Role, Name, Gender.equals("1"), date);
-
-//        PrintWriter out = response.getWriter();
-//        out.println(a);
-        db.insertAccount(a);
-        response.sendRedirect("AccountListServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +47,11 @@ public class AddAccountController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        AccountDAO db = new AccountDAO();
+        Account a = db.getAccount(Integer.parseInt(id));
+        request.setAttribute("account", a);
+        request.getRequestDispatcher("UpdateAccount.jsp").forward(request, response);
     }
 
     /**
@@ -77,7 +65,20 @@ public class AddAccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String role = request.getParameter("role");
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String dob = request.getParameter("dob");
+        Date date = java.sql.Date.valueOf(dob);
+        Account a = new Account(Integer.parseInt(id), username, password, role, name, gender.equals("1"), date);
+        AccountDAO db = new AccountDAO();
+        db.updateAccount(a);
+//        PrintWriter out = response.getWriter();
+//        out.print(dob);
+        response.sendRedirect("AccountListServlet");
     }
 
     /**

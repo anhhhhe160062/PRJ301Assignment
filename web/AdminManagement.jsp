@@ -34,6 +34,10 @@
                     <td>${account.name}</td>
                     <td>${account.gender}</td>
                     <td>${account.DOB}</td>
+                    <td>
+                        <a href="#" onClick="getUpdateLink(${account.id})">Update</a>
+                        <a href="#" onClick="showMess(${account.id})">Delete</a>
+                    </td>
                 </tr>
             </c:forEach>
             <tr>
@@ -41,4 +45,16 @@
             </tr>
         </table>
     </body>
+    <script>
+        function showMess(id){
+            console.log("abcdfd");
+            var option = confirm("Are you sure?");
+            if(option === true){
+                window.location.href = 'DeleteAccountController?id=' + id;
+            }
+        }
+        function getUpdateLink(id){
+            window.location.href = 'UpdateAccountController?id=' + id;
+        }
+    </script>
 </html>
