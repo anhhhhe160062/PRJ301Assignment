@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AccountController;
+package AdminManagement;
 
 import DAL.AccountDAO;
-import Model.Account;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hai Anh
  */
-public class AddAccountController extends HttpServlet {
+public class AccountListController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,23 +30,15 @@ public class AddAccountController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String userName = request.getParameter("userName");
-        String Password = request.getParameter("Password");
-        String Role = request.getParameter("Role");
-        String Name = request.getParameter("Name");
-        String Gender = request.getParameter("Gender");
-        String DOB = request.getParameter("DOB");
-
-        Date date = java.sql.Date.valueOf(DOB);
-
-        AccountDAO db = new AccountDAO();
-        Account a = new Account(userName, Password, Role, Name, Gender.equals("1"), date);
+        AccountDAO accountdb = new AccountDAO();
+        ArrayList list = accountdb.getAll();
 
 //        PrintWriter out = response.getWriter();
-//        out.println(a);
-        db.insertAccount(a);
-        response.sendRedirect("AccountListServlet");
+//        for(int i = 0; i < list.size(); i++){
+//            out.println(list.get(i));
+//        }
+        request.setAttribute("accountList", list);
+        request.getRequestDispatcher("AdminManagement.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

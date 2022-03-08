@@ -10,6 +10,7 @@ package Model;
  * @author Hai Anh
  */
 public class Customer {
+
     private int customerID;
     private String name;
     private int phoneNumber;
@@ -20,6 +21,15 @@ public class Customer {
 
     public Customer(int customerID, String name, int phoneNumber, int ShopPoints, int purchaseID, int discountID, int shopID) {
         this.customerID = customerID;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.ShopPoints = ShopPoints;
+        this.purchaseID = purchaseID;
+        this.discountID = discountID;
+        this.shopID = shopID;
+    }
+
+    public Customer(String name, int phoneNumber, int ShopPoints, int purchaseID, int discountID, int shopID) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.ShopPoints = ShopPoints;
@@ -86,6 +96,8 @@ public class Customer {
     public void setShopID(int shopID) {
         this.shopID = shopID;
     }
-    
-    
+    @Override
+    public String toString() {
+        return "Customer{" + "customerID=" + customerID + ", name=" + name + ", phoneNumber=" + phoneNumber + ", ShopPoints=" + ShopPoints + ", purchaseID=" + purchaseID + ", discountID=" + discountID + ", shopID=" + shopID + '}';
+    }
 }

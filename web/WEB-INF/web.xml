@@ -10,19 +10,39 @@
     </servlet>
     <servlet>
         <servlet-name>AccountListServlet</servlet-name>
-        <servlet-class>AccountController.AccountListController</servlet-class>
+        <servlet-class>AdminManagement.AccountListController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddAccountController</servlet-name>
-        <servlet-class>AccountController.AddAccountController</servlet-class>
+        <servlet-class>AdminManagement.AddAccountController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteAccountController</servlet-name>
-        <servlet-class>AccountController.DeleteAccountController</servlet-class>
+        <servlet-class>AdminManagement.DeleteAccountController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateAccountController</servlet-name>
-        <servlet-class>AccountController.UpdateAccountController</servlet-class>
+        <servlet-class>AdminManagement.UpdateAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerListController</servlet-name>
+        <servlet-class>CustomerManagement.CustomerListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCustomer</servlet-name>
+        <servlet-class>CustomerManagement.AddCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCustomerController</servlet-name>
+        <servlet-class>CustomerManagement.AddCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomerController</servlet-name>
+        <servlet-class>CustomerManagement.DeleteCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCustomerController</servlet-name>
+        <servlet-class>CustomerManagement.UpdateCustomerController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -47,6 +67,26 @@
     <servlet-mapping>
         <servlet-name>UpdateAccountController</servlet-name>
         <url-pattern>/UpdateAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerListController</servlet-name>
+        <url-pattern>/CustomerListController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomer</servlet-name>
+        <url-pattern>/AddCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomerController</servlet-name>
+        <url-pattern>/AddCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomerController</servlet-name>
+        <url-pattern>/DeleteCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCustomerController</servlet-name>
+        <url-pattern>/UpdateCustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
