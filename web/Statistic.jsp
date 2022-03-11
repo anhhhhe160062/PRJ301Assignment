@@ -19,6 +19,25 @@
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
                 <h1>Statistics</h1>
+                <form action="ExcelExportServlet" method="post">
+                    <table>
+                        <tr>
+                            <td>From Date</td>
+                            <td>
+                                <input type="date" name="fromDate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>To Date</td>
+                            <td>
+                                <input type="date" name="toDate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit">Export xls</button></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </body>

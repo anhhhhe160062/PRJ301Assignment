@@ -6,6 +6,7 @@
 package DAL;
 
 import Model.Account;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -99,7 +100,7 @@ public class AccountDAO extends BaseDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 Account a = new Account(rs.getInt("id"), rs.getString("UserName"), rs.getString("Password"), rs.getString("Role"), rs.getString("Name"), rs.getDate("DOB"));
                 return a;
             }
@@ -118,6 +119,30 @@ public class AccountDAO extends BaseDAO {
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public ArrayList<Account> getShopAccountBaseOnDOB(Date fromDate, Date toDate) {
+        ArrayList<Account> shopAccounts = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Account WHERE DOB BETWEEN ? AND ? AND Role LIKE 'shop'";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDate(1, fromDate);
+            statement.setDate(2, toDate);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Account a = new Account();
+                a.setId(rs.getInt("ID"));
+                a.setUserName(rs.getString("UserName"));
+                a.setPassword(rs.getString("Password"));
+                a.setRole(rs.getString("Role"));
+                a.setName(rs.getString("Name"));
+                a.setDOB(rs.getDate("DOB"));
+                shopAccounts.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return shopAccounts;
     }
 
 }

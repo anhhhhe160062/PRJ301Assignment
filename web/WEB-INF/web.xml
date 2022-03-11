@@ -96,6 +96,10 @@
         <servlet-name>ProfileController</servlet-name>
         <servlet-class>ProfileManagement.ProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcelExportServlet</servlet-name>
+        <servlet-class>StatisticExport.ExcelExportServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>ProfileController</servlet-name>
         <url-pattern>/ProfileController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcelExportServlet</servlet-name>
+        <url-pattern>/ExcelExportServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
