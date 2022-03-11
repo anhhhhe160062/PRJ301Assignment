@@ -10,36 +10,43 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>AShopCMS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Discount Management</h1>
         <jsp:include page="Shared/Menu.jsp"/>
-        <table style="border: 1px solid black">
-            <tr>
-                <th>ID</th>
-                <th>DiscountContent</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
-                <th>Status</th>
-            </tr>
-            <c:forEach items="${discountCodeList}" var="discount">
-                <tr>
-                    <td>${discount.id}</td>
-                    <td>${discount.discountContent}</td>
-                    <td>${discount.startDate}</td>
-                    <td>${discount.endDate}</td>
-                    <td>${discount.status}</td>
-                    <td>
-                        <a href="#" onClick="getUpdateLink(${discount.id})">Update</a>
-                        <a href="#" onClick="showMess(${discount.id})">Delete</a>
-                    </td>
-                </tr>
-            </c:forEach>
-            <tr>
-                <td><a href="AddDiscountCode.jsp">CREATE</a></td>
-            </tr>
-        </table>
+        <div class="main-container">
+            <jsp:include page="Shared/Header.jsp"/>
+            <div class="container">
+                <h1>Discount Management</h1>
+                <table style="border: 1px solid black">
+                    <tr>
+                        <th>ID</th>
+                        <th>DiscountContent</th>
+                        <th>StartDate</th>
+                        <th>EndDate</th>
+                        <th>Status</th>
+                    </tr>
+                    <c:forEach items="${discountCodeList}" var="discount">
+                        <tr>
+                            <td>${discount.id}</td>
+                            <td>${discount.discountContent}</td>
+                            <td>${discount.startDate}</td>
+                            <td>${discount.endDate}</td>
+                            <td>${discount.status}</td>
+                            <td>
+                                <a href="#" onClick="getUpdateLink(${discount.id})">Update</a>
+                                <a href="#" onClick="showMess(${discount.id})">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td><a href="AddDiscountCode.jsp">CREATE</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
     <script>
         function showMess(id) {

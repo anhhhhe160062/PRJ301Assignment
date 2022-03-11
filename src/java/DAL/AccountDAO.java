@@ -28,7 +28,6 @@ public class AccountDAO extends BaseDAO {
                     + "      ,Password\n"
                     + "      ,Role\n"
                     + "      ,Name\n"
-                    + "      ,Gender\n"
                     + "      ,DOB\n"
                     + "  FROM Account";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -40,7 +39,6 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("Password"));
                 a.setRole(rs.getString("Role"));
                 a.setName(rs.getString("Name"));
-                a.setGender(rs.getBoolean("Gender"));
                 a.setDOB(rs.getDate("DOB"));
                 accounts.add(a);
             }
@@ -58,15 +56,13 @@ public class AccountDAO extends BaseDAO {
                     + "     ,?\n"
                     + "     ,?\n"
                     + "     ,?\n"
-                    + "     ,?\n"
                     + "     ,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, a.getUserName());
             statement.setString(2, a.getPassword());
             statement.setString(3, a.getRole());
             statement.setString(4, a.getName());
-            statement.setBoolean(5, a.isGender());
-            statement.setDate(6, a.getDOB());
+            statement.setDate(5, a.getDOB());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +76,6 @@ public class AccountDAO extends BaseDAO {
                     + "Password = ?,\n"
                     + "Role = ?,\n"
                     + "Name = ?,\n"
-                    + "Gender = ?,\n"
                     + "DOB = ?\n"
                     + "WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -88,9 +83,8 @@ public class AccountDAO extends BaseDAO {
             statement.setString(2, a.getPassword());
             statement.setString(3, a.getRole());
             statement.setString(4, a.getName());
-            statement.setBoolean(5, a.isGender());
-            statement.setDate(6, a.getDOB());
-            statement.setInt(7, a.getId());
+            statement.setDate(5, a.getDOB());
+            statement.setInt(6, a.getId());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +100,7 @@ public class AccountDAO extends BaseDAO {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
-                Account a = new Account(rs.getInt("id"), rs.getString("UserName"), rs.getString("Password"), rs.getString("Role"), rs.getString("Name"), rs.getBoolean("Gender"), rs.getDate("DOB"));
+                Account a = new Account(rs.getInt("id"), rs.getString("UserName"), rs.getString("Password"), rs.getString("Role"), rs.getString("Name"), rs.getDate("DOB"));
                 return a;
             }
         } catch (SQLException ex) {

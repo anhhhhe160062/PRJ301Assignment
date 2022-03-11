@@ -9,15 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>AShopCMS</title>
     </head>
     <body>
-        <nav>
-            <a href="#">Dashboard</a>
-            <a href="#">Product</a>
-            <a href="#">Admin</a>
-            <a href="#">Customer</a>
-            <a href="#">Statistics</a>
+        <nav class="side-bar nav-bar">
+            <a href="Profile.jsp">Profile</a>
+            <a href="ProductListController">Product</a>
+            <a href="AccountListServlet">Admin</a>
+            <a href="CustomerListController">Customer</a>
+            <a href="Statistic.jsp">Statistics</a>
         </nav>
     </body>
 </html>

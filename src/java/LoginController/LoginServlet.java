@@ -1,17 +1,20 @@
-package Controller;
+package LoginController;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import DAL.AccountDAO;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,16 +36,22 @@ public class LoginServlet extends HttpServlet {
         String u = request.getParameter("user");
         String p = request.getParameter("pass");
 
-//        String userName = getInitParameter("user");
-//        String passWord = getInitParameter("pass");
-        String userName = "abcd";
-        String passWord = "123456";
+        AccountDAO db = new AccountDAO();
+        ArrayList<Account> list = db.getAll();
 
-        if (u.equals(userName) && p.equals(passWord)) {
-            request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("index.html");
+        for (int i = 0; i < list.size(); i++) {
+            if (u.equals(list.get(i).getUserName())) {
+                if (p.equals(list.get(i).getPassword())) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("account", list.get(i));
+                    request.getRequestDispatcher("Profile.jsp").forward(request, response);
+                }
+            }
         }
+        response.sendRedirect("index.html");
+
+//        String userName = "abcd";
+//        String passWord = "123456";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

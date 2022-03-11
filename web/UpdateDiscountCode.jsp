@@ -9,45 +9,53 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>AShopCMS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form action="UpdateDiscountCodeController" method="post">
-            <table>
-                <tr>
-                    <td>ID:</td>
-                    <td>
-                        <input value="${discount.id}" type="text" name="discountID" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td>DiscountContent:</td>
-                    <td>
-                        <input value="${discount.discountContent}" type="text" name="discountContent">
-                    </td>
-                </tr>
-                <tr>
-                    <td>StartDate:</td>
-                    <td>
-                        <input value="${discount.startDate}" type="date" name="startDate">
-                    </td>
-                </tr>
-                <tr>
-                    <td>EndDate:</td>
-                    <td>
-                        <input value="${discount.endDate}" type="date" name="endDate">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Status:</td>
-                    <td>
-                        <input value="${discount.status}" type="text" name="status">
-                    </td>
-                </tr>
-                <tr>
-                    <td><button type="submit">Update</button></td>
-                </tr>
-            </table>
-        </form>    
+        <jsp:include page="Shared/Menu.jsp"/>
+        <div class="main-container">
+            <jsp:include page="Shared/Header.jsp"/>
+            <div class="container">
+                <form action="UpdateDiscountCodeController" method="post">
+                    <table>
+                        <tr>
+                            <td>ID:</td>
+                            <td>
+                                <input value="${discount.id}" type="text" name="discountID" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DiscountContent:</td>
+                            <td>
+                                <input value="${discount.discountContent}" type="text" name="discountContent">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>StartDate:</td>
+                            <td>
+                                <input value="${discount.startDate}" type="date" name="startDate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EndDate:</td>
+                            <td>
+                                <input value="${discount.endDate}" type="date" name="endDate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Status:</td>
+                            <td>
+                                <input value="${discount.status}" type="text" name="status">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit">Update</button></td>
+                        </tr>
+                    </table>
+                </form>   
+            </div>
+        </div>
     </body>
 </html>

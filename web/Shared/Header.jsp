@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Dashboard
-    Created on : Mar 1, 2022, 11:56:37 AM
+    Document   : Header
+    Created on : Mar 10, 2022, 4:14:16 PM
     Author     : Hai Anh
 --%>
 
@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>abc!</h1>
+        <div class="main-header">
+            <h1>Role: ${sessionScope.account.role}</h1>
+        </div>
     </body>
 </html>

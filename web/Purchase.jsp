@@ -10,30 +10,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>AShopCMS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Customer Management</h1>
         <jsp:include page="Shared/Menu.jsp"/>
-        <table style="border: 1px solid black">
-            <tr>
-                <th>PurchaseID</th>
-                <th>ProductID</th>
-            </tr>
-            <c:forEach items="${purchaseList}" var="purchase">
-                <tr>
-                    <td>${purchase.purchaseID}</td>
-                    <td>${purchase.productID}</td>
-                    <td>
-                        <a href="#" onClick="getUpdateLink(${purchase.purchaseID})">Update</a>
-                        <a href="#" onClick="showMess(${purchase.purchaseID})">Delete</a>
-                    </td>
-                </tr>
-            </c:forEach>
-            <tr>
-                <td><a href="AddPurchase.jsp">CREATE</a></td>
-            </tr>
-        </table>
+        <div class="main-container">
+            <jsp:include page="Shared/Header.jsp"/>
+            <div class="container">
+                <h1>Customer Management</h1>
+                <table style="border: 1px solid black">
+                    <tr>
+                        <th>PurchaseID</th>
+                        <th>ProductID</th>
+                    </tr>
+                    <c:forEach items="${purchaseList}" var="purchase">
+                        <tr>
+                            <td>${purchase.purchaseID}</td>
+                            <td>${purchase.productID}</td>
+                            <td>
+                                <a href="#" onClick="getUpdateLink(${purchase.purchaseID})">Update</a>
+                                <a href="#" onClick="showMess(${purchase.purchaseID})">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td><a href="AddPurchase.jsp">CREATE</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
     <script>
         function showMess(id) {
