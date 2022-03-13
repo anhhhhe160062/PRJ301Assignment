@@ -26,9 +26,7 @@ public class CustomerDAO extends BaseDAO {
             String sql = "SELECT CustomerID\n"
                     + "      ,[Full Name]\n"
                     + "      ,[Phone Number]\n"
-                    + "      ,[Shop Points]\n"
                     + "      ,PurchaseID\n"
-                    + "      ,DiscountID\n"
                     + "      ,ShopID\n"
                     + "  FROM Customer";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -38,9 +36,7 @@ public class CustomerDAO extends BaseDAO {
                 c.setCustomerID(rs.getInt("CustomerID"));
                 c.setName(rs.getString("Full Name"));
                 c.setPhoneNumber(rs.getInt("Phone Number"));
-                c.setShopPoints(rs.getInt("Shop Points"));
                 c.setPurchaseID(rs.getInt("PurchaseID"));
-                c.setDiscountID(rs.getInt("DiscountID"));
                 c.setShopID(rs.getInt("ShopID"));
                 customer.add(c);
             }
@@ -57,16 +53,12 @@ public class CustomerDAO extends BaseDAO {
                     + "     (?\n"
                     + "     ,?\n"
                     + "     ,?\n"
-                    + "     ,?\n"
-                    + "     ,?\n"
                     + "     ,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, c.getName());
             statement.setInt(2, c.getPhoneNumber());
-            statement.setInt(3, c.getShopPoints());
-            statement.setInt(4, c.getPurchaseID());
-            statement.setInt(5, c.getDiscountID());
-            statement.setInt(6, c.getShopID());
+            statement.setInt(3, c.getPurchaseID());
+            statement.setInt(4, c.getShopID());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,19 +70,15 @@ public class CustomerDAO extends BaseDAO {
             String sql = "UPDATE Customer SET "
                     + "[Full Name] = ?,\n"
                     + "[Phone Number] = ?,\n"
-                    + "[Shop Points] = ?,\n"
                     + "PurchaseID = ?,\n"
-                    + "DiscountID= ?,\n"
                     + "ShopID = ?\n"
                     + "WHERE CustomerID = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, c.getName());
             statement.setInt(2, c.getPhoneNumber());
-            statement.setInt(3, c.getShopPoints());
-            statement.setInt(4, c.getPurchaseID());
-            statement.setInt(5, c.getDiscountID());
-            statement.setInt(6, c.getShopID());
-            statement.setInt(7, c.getCustomerID());
+            statement.setInt(3, c.getPurchaseID());
+            statement.setInt(4, c.getShopID());
+            statement.setInt(5, c.getCustomerID());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +94,7 @@ public class CustomerDAO extends BaseDAO {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Customer c = new Customer(rs.getInt("CustomerID"), rs.getString("Full Name"), rs.getInt("Phone Number"), rs.getInt("Shop Points"), rs.getInt("PurchaseID"), rs.getInt("DiscountID"), rs.getInt("ShopID"));
+                Customer c = new Customer(rs.getInt("CustomerID"), rs.getString("Full Name"), rs.getInt("Phone Number"), rs.getInt("PurchaseID"), rs.getInt("ShopID"));
                 return c;
             }
         } catch (SQLException ex) {

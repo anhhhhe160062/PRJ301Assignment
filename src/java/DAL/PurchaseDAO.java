@@ -95,4 +95,20 @@ public class PurchaseDAO extends BaseDAO {
             Logger.getLogger(PurchaseDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public Purchase getLatestRecord() {
+        try {
+            String sql = "SELECT TOP 1 * FROM Purchase\n"
+                    + "ORDER BY PurchaseID DESC";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                Purchase p = new Purchase(rs.getInt("PurchaseID"), rs.getInt("ProductID"));
+                return p;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PurchaseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

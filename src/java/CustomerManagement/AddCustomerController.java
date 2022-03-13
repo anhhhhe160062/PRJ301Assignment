@@ -34,13 +34,11 @@ public class AddCustomerController extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("Name");
         String Phone = request.getParameter("phoneNumber");
-        String shopPoints = request.getParameter("shopPoints");
         String purchaseID = request.getParameter("purchaseID");
-        String discountID = request.getParameter("discountID");
         String shopID = request.getParameter("shopID");
 
         CustomerDAO db = new CustomerDAO();
-        Customer a = new Customer(name, Integer.parseInt(Phone), Integer.parseInt(shopPoints), Integer.parseInt(purchaseID), Integer.parseInt(discountID), Integer.parseInt(shopID));
+        Customer a = new Customer(name, Integer.parseInt(Phone), Integer.parseInt(purchaseID), Integer.parseInt(shopID));
 
 //        PrintWriter out = response.getWriter();
 //        out.println(a);

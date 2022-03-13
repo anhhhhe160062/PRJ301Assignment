@@ -81,12 +81,10 @@ public class UpdateCustomerController extends HttpServlet {
         String customerID = request.getParameter("customerID");
         String Name = request.getParameter("Name");
         String phoneNumber = request.getParameter("phoneNumber");
-        String shopPoints = request.getParameter("shopPoints");
         String purchaseID = request.getParameter("purchaseID");
-        String discountID = request.getParameter("discountID");
         String shopID = request.getParameter("shopID");
 
-        Customer c = new Customer(Integer.parseInt(customerID), Name, Integer.parseInt(phoneNumber), Integer.parseInt(shopPoints), Integer.parseInt(purchaseID), Integer.parseInt(discountID), Integer.parseInt(shopID));
+        Customer c = new Customer(Integer.parseInt(customerID), Name, Integer.parseInt(phoneNumber), Integer.parseInt(purchaseID), Integer.parseInt(shopID));
         CustomerDAO db = new CustomerDAO();
         db.updateCustomer(c);
 //        PrintWriter out = response.getWriter();

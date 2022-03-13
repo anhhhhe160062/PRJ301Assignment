@@ -4,6 +4,7 @@
     Author     : Hai Anh
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,27 +34,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Shop Points</td>
-                            <td>
-                                <input type="text" name="shopPoints">
-                            </td>
-                        </tr>
-                        <tr>
                             <td>PurchaseID:</td>
                             <td>
-                                <input type="text" name="purchaseID">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>DiscountID</td>
-                            <td>
-                                <input type="text" name="discountID">
+                                <input value="${latestPurchase.purchaseID}" type="text" name="purchaseID" readonly>
                             </td>
                         </tr>
                         <tr>
                             <td>ShopID</td>
                             <td>
-                                <input type="text" name="shopID">
+                                <select name="shopID">
+                                    <c:forEach items="${shopAccounts}" var="shopAccounts">
+                                        <option value="${shopAccounts.id}">${shopAccounts.id}</option>
+                                    </c:forEach>
+                                </select>
                             </td>
                         </tr>
                         <tr>

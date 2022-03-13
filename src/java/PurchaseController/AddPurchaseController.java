@@ -5,10 +5,15 @@
  */
 package PurchaseController;
 
+import DAL.AccountDAO;
+import DAL.ProductDAO;
 import DAL.PurchaseDAO;
+import Model.Account;
+import Model.Product;
 import Model.Purchase;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +36,7 @@ public class AddPurchaseController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String purchaseID = request.getParameter("purchaseID");
-        String productID = request.getParameter("productID");
 
-        PurchaseDAO db = new PurchaseDAO();
-        Purchase p = new Purchase(Integer.parseInt(productID));
-
-//        PrintWriter out = response.getWriter();
-//        out.println(a);
-        db.insertPurchase(p);
-        response.sendRedirect("PurchaseListController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,7 +51,11 @@ public class AddPurchaseController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ArrayList<Product> listProduct = new ArrayList();
+        ProductDAO db = new ProductDAO();
+        listProduct = db.getAll();
+        request.setAttribute("products", listProduct);
+        request.getRequestDispatcher("AddPurchase.jsp").forward(request, response);
     }
 
     /**
@@ -69,7 +69,23 @@ public class AddPurchaseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String productID = request.getParameter("product");
+
+        PurchaseDAO db = new PurchaseDAO();
+        Purchase p = new Purchase(Integer.parseInt(productID));
+
+        db.insertPurchase(p);
+        Purchase latestPurchase = db.getLatestRecord();
+        
+//        PrintWriter out = response.getWriter();
+//        out.println(latestPurchase);
+
+        AccountDAO accountDB = new AccountDAO();
+        ArrayList<Account> shopAccountList = accountDB.getShopAccounts();
+        
+        request.setAttribute("latestPurchase", latestPurchase);
+        request.setAttribute("shopAccounts", shopAccountList);
+        request.getRequestDispatcher("AddCustomer.jsp").forward(request, response);
     }
 
     /**

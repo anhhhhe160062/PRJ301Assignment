@@ -39,31 +39,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Shop Points</td>
-                            <td>
-                                <input value="${customer.shopPoints}" type="text" name="shopPoints" >
-                            </td>
-                        </tr>
-                        <tr>
                             <td>PurchaseID:</td>
                             <td>
-                                <input value="${customer.purchaseID}" type="text" name="purchaseID" >
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>DiscountID</td>
-                            <td>
-                                <input value="${customer.discountID}" type="text" name="discountID" >
+                                <input value="${customer.purchaseID}" type="text" name="purchaseID" readonly>
                             </td>
                         </tr>
                         <tr>
                             <td>ShopID</td>
                             <td>
-                                <input value="${customer.shopID}" type="text" name="shopID" >
+                                <input value="${customer.shopID}" type="text" name="shopID" readonly>
                             </td>
                         </tr>
                         <tr>
-                            <td><button type="submit">Create</button></td>
+                            <td><button type="submit">Update</button></td>
                         </tr>
                     </table>
                 </form>    

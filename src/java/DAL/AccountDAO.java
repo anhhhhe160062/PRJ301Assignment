@@ -145,4 +145,26 @@ public class AccountDAO extends BaseDAO {
         return shopAccounts;
     }
 
+    public ArrayList<Account> getShopAccounts() {
+        ArrayList<Account> shopAccounts = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Account WHERE Role LIKE 'shop'";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Account a = new Account();
+                a.setId(rs.getInt("ID"));
+                a.setUserName(rs.getString("UserName"));
+                a.setPassword(rs.getString("Password"));
+                a.setRole(rs.getString("Role"));
+                a.setName(rs.getString("Name"));
+                a.setDOB(rs.getDate("DOB"));
+                shopAccounts.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return shopAccounts;
+    }
+
 }

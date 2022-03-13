@@ -25,9 +25,7 @@
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Phone number</th>
-                        <th>Shop Points</th>
                         <th>PurchaseID</th>
-                        <th>DiscountID</th>
                         <th>ShopID</th>
                     </tr>
                     <c:forEach items="${customerList}" var="customer">
@@ -35,9 +33,7 @@
                             <td>${customer.customerID}</td>
                             <td>${customer.name}</td>
                             <td>${customer.phoneNumber}</td>
-                            <td>${customer.shopPoints}</td>
                             <td>${customer.purchaseID}</td>
-                            <td>${customer.discountID}</td>
                             <td>${customer.shopID}</td>
                             <td>
                                 <a href="#" onClick="getUpdateLink(${customer.customerID})">Update</a>
@@ -46,7 +42,7 @@
                         </tr>
                     </c:forEach>
                     <tr>
-                        <td><a href="AddCustomer.jsp">CREATE</a></td>
+                        <td><a href="AddPurchaseController">CREATE</a></td>
                     </tr>
                 </table>
             </div>
