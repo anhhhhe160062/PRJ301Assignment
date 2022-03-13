@@ -14,18 +14,54 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <style>
+            .table-data.profile-data:nth-of-type(even){
+                background-color: white;
+            }
+            .table-data.profile-data td{
+                border: 1px solid;
+            }
+        </style>
         <jsp:include page="Shared/Menu.jsp"/>
         <div class="main-container">
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
                 <h1>Profile</h1>
-                <h1>${sessionScope.account.id}</h1>
-                <h1>${sessionScope.account.userName}</h1>
-                <h1>${sessionScope.account.password}</h1>
-                <h1>${sessionScope.account.role}</h1>
-                <h1>${sessionScope.account.name}</h1>
-                <h1>${sessionScope.account.createdDate}</h1>
+                <div class="createLink">
+                    <a href="#" onClick="getUpdateLink(${sessionScope.account.id})">Update</a>
+                </div>
+                <table class="content-table">
+                    <tr class="table-data profile-data">
+                        <td>ID:</td>
+                        <td>${sessionScope.account.id}</td>
+                    </tr>
+                    <tr class="table-data profile-data">
+                        <td>Username:</td>
+                        <td>${sessionScope.account.userName}</td>
+                    </tr>
+                    <tr class="table-data profile-data">
+                        <td>Password:</td>
+                        <td>${sessionScope.account.password}</td>
+                    </tr>
+                    <tr class="table-data profile-data">
+                        <td>Role:</td>
+                        <td>${sessionScope.account.role}</td>
+                    </tr>
+                    <tr class="table-data profile-data">
+                        <td>Full Name:</td>
+                        <td>${sessionScope.account.name}</td>
+                    </tr>
+                    <tr class="table-data profile-data">
+                        <td>Created Date</td>
+                        <td>${sessionScope.account.createdDate}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>
+    <script>
+        function getUpdateLink(id) {
+            window.location.href = 'UpdateAccountController?id=' + id;
+        }
+    </script>
 </html>

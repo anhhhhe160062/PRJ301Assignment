@@ -18,19 +18,17 @@
         <div class="main-container">
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
-                <form action="AddProductController" method="get">
-                    <table>
-                        <tr>
-                            <td>Product Name</td>
-                            <td>
-                                <input type="text" name="productName">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Create</button></td>
-                        </tr>
-                    </table>
-                </form>  
+                <div class="form-box">
+                    <form action="AddProductController" method="get">
+                        <div class="text-field">
+                            <label>
+                                Product Name
+                            </label>
+                            <input type="text" name="productName">
+                            <button type="submit">Create</button>
+                        </div>
+                    </form>  
+                </div>
             </div>
         </div> 
     </body>

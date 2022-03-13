@@ -19,23 +19,19 @@
         <div class="main-container">
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
-                <form action="AddPurchaseController" method="post">
-                    <table>
-                        <tr>
-                            <td>ProductID:</td>
-                            <td>
-                                <select name="product">
-                                    <c:forEach items="${products}" var="products">
-                                        <option value="${products.productID}">${products.productID}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Create</button></td>
-                        </tr>
-                    </table>
-                </form>  
+                <div class="form-box">
+                    <form action="AddPurchaseController" method="post">
+                        <div class="text-field">
+                            <label>ProductID:</label>
+                            <select name="product">
+                                <c:forEach items="${products}" var="products">
+                                    <option value="${products.productID}">${products.productID}</option>
+                                </c:forEach>
+                            </select>
+                            <button type="submit">Create</button>
+                        </div>
+                    </form>  
+                </div>
             </div>
         </div>
     </body>

@@ -12,6 +12,23 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <style>
+            .main-header{
+                width: calc(100% - 196px);
+                height: 54px;
+                position: fixed;
+                background-color: #fff;
+                top: 0;
+                display: flex;
+                align-items: center;
+                box-shadow: 0px 4px 8px #00000029;
+                padding: 0 1rem;
+            }
+            .main-header h1{
+                display:flex;
+                align-content: center;
+            }
+        </style>
         <div class="main-header">
             <h1>Role: ${sessionScope.account.role}</h1>
         </div>

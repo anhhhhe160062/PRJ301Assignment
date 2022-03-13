@@ -20,30 +20,31 @@
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
                 <h1>Customer Management</h1>
-                <table style="border: 1px solid black">
-                    <tr>
+                <div class="createLink">
+                    <a href="AddPurchaseController">Create</a>
+                </div>
+                <table class="content-table">
+                    <tr class="table-header">
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Phone number</th>
                         <th>PurchaseID</th>
                         <th>ShopID</th>
+                        <th>Action</th>
                     </tr>
                     <c:forEach items="${customerList}" var="customer">
-                        <tr>
+                        <tr class="table-data">
                             <td>${customer.customerID}</td>
                             <td>${customer.name}</td>
                             <td>${customer.phoneNumber}</td>
                             <td>${customer.purchaseID}</td>
                             <td>${customer.shopID}</td>
                             <td>
-                                <a href="#" onClick="getUpdateLink(${customer.customerID})">Update</a>
-                                <a href="#" onClick="showMess(${customer.customerID})">Delete</a>
+                                <a href="#" onClick="getUpdateLink(${customer.customerID})"><i class="fa-solid fa-pen-clip"></i></a>
+                                <a href="#" onClick="showMess(${customer.customerID})"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     </c:forEach>
-                    <tr>
-                        <td><a href="AddPurchaseController">CREATE</a></td>
-                    </tr>
                 </table>
             </div>
             <c:set var="pageNumber" value="${pageNumber}"/>

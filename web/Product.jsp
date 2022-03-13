@@ -20,24 +20,25 @@
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
                 <h1>Product Management</h1>
-                <table style="border: 1px solid black">
-                    <tr>
+                <div class="createLink">
+                    <a href="AddProduct.jsp">Create</a>
+                </div>
+                <table class="content-table">
+                    <tr class="table-header">
                         <th>ProductID</th>
                         <th>Product Name</th>
+                        <th>Action</th>
                     </tr>
                     <c:forEach items="${productList}" var="product">
-                        <tr>
+                        <tr class="table-data">
                             <td>${product.productID}</td>
                             <td>${product.productName}</td>
                             <td>
-                                <a href="#" onClick="getUpdateLink(${product.productID})">Update</a>
-                                <a href="#" onClick="showMess(${product.productID})">Delete</a>
+                                <a href="#" onClick="getUpdateLink(${product.productID})"><i class="fa-solid fa-pen-clip"></i></a>
+                                <a href="#" onClick="showMess(${product.productID})"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     </c:forEach>
-                    <tr>
-                        <td><a href="AddProduct.jsp">CREATE</a></td>
-                    </tr>
                 </table>
             </div>
             <c:set var="pageNumber" value="${pageNumber}"/>

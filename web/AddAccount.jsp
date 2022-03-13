@@ -18,41 +18,23 @@
         <div class="main-container">
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
-                <form action="AddAccountController" method="get">
-                    <table>
-                        <tr>
-                            <td>UserName:</td>
-                            <td>
-                                <input type="text" name="userName">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Password:</td>
-                            <td>
-                                <input type="text" name="Password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Role:</td>
-                            <td>
-                                <input type="text" name="Role">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Name:</td>
-                            <td>
-                                <input type="text" name="Name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>CreatedDate:</td>
-                            <td><input type="date" name="CreatedDate"</td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Create</button></td>
-                        </tr>
-                    </table>
-                </form>
+                <div class="form-box">
+                    <form action="AddAccountController" method="get">
+                        <div class="text-field">
+                            <label>UserName:</label>
+                            <input type="text" name="userName">
+                            <label>Password:</label>
+                            <input type="text" name="Password">
+                            <label>Role:</label>
+                            <input type="text" name="Role">
+                            <label>Name:</label>
+                            <input type="text" name="Name">
+                            <label>CreatedDate:</label>
+                            <input type="date" name="CreatedDate"/>
+                            <button type="submit">Create</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </body>

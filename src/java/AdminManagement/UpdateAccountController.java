@@ -70,8 +70,8 @@ public class UpdateAccountController extends HttpServlet {
         String password = request.getParameter("password");
         String role = request.getParameter("role");
         String name = request.getParameter("name");
-        String dob = request.getParameter("dob");
-        Date date = java.sql.Date.valueOf(dob);
+        String createdDate = request.getParameter("createdDate");
+        Date date = java.sql.Date.valueOf(createdDate);
         Account a = new Account(Integer.parseInt(id), username, password, role, name, date);
         AccountDAO db = new AccountDAO();
         db.updateAccount(a);

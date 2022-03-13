@@ -19,41 +19,25 @@
         <div class="main-container">
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
-                <form action="AddCustomerController" method="get">
-                    <table>
-                        <tr>
-                            <td>Full Name:</td>
-                            <td>
-                                <input type="text" name="Name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Phone number:</td>
-                            <td>
-                                <input type="text" name="phoneNumber">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>PurchaseID:</td>
-                            <td>
-                                <input value="${latestPurchase.purchaseID}" type="text" name="purchaseID" readonly>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ShopID</td>
-                            <td>
-                                <select name="shopID">
-                                    <c:forEach items="${shopAccounts}" var="shopAccounts">
-                                        <option value="${shopAccounts.id}">${shopAccounts.id}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Create</button></td>
-                        </tr>
-                    </table>
-                </form>   
+                <div class="form-box">
+                    <form action="AddCustomerController" method="get">
+                        <div class="text-field">
+                            <label>Full Name:</label>
+                            <input type="text" name="Name">
+                            <label>Phone number:</label>
+                            <input type="text" name="phoneNumber">
+                            <label>PurchaseID:</label>
+                            <input value="${latestPurchase.purchaseID}" type="text" name="purchaseID" readonly>
+                            <label>ShopID</label>
+                            <select name="shopID">
+                                <c:forEach items="${shopAccounts}" var="shopAccounts">
+                                    <option value="${shopAccounts.id}">${shopAccounts.id}</option>
+                                </c:forEach>
+                            </select>
+                            <button type="submit">Create</button>
+                        </div>
+                    </form>   
+                </div>
             </div>
         </div>
     </body>

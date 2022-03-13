@@ -18,43 +18,23 @@
         <div class="main-container">
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
-                <form action="UpdateCustomerController" method="post">
-                    <table>
-                        <tr>
-                            <td>ID:</td>
-                            <td>
-                                <input value="${customer.customerID}" type="text" name="customerID" readonly>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Full Name:</td>
-                            <td>
-                                <input value="${customer.name}" type="text" name="Name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Phone number:</td>
-                            <td>
-                                <input value="${customer.phoneNumber}" type="" name="phoneNumber" >
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>PurchaseID:</td>
-                            <td>
-                                <input value="${customer.purchaseID}" type="text" name="purchaseID" readonly>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ShopID</td>
-                            <td>
-                                <input value="${customer.shopID}" type="text" name="shopID" readonly>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Update</button></td>
-                        </tr>
-                    </table>
-                </form>    
+                <div class="form-box">
+                    <form action="UpdateCustomerController" method="post">
+                        <div class="text-field">
+                            <label>ID:</label>
+                            <input value="${customer.customerID}" type="text" name="customerID" readonly>
+                            <label>Full Name:</label>
+                            <input value="${customer.name}" type="text" name="Name">
+                            <label>Phone number:</label>
+                            <input value="${customer.phoneNumber}" type="" name="phoneNumber" >
+                            <label>PurchaseID:</label>
+                            <input value="${customer.purchaseID}" type="text" name="purchaseID" readonly>
+                            <label>ShopID</label>
+                            <input value="${customer.shopID}" type="text" name="shopID" readonly>
+                            <button type="submit">Update</button>
+                        </div>
+                    </form>    
+                </div>
             </div>
         </div>
     </body>
