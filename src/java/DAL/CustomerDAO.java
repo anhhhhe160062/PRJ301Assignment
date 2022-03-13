@@ -114,4 +114,12 @@ public class CustomerDAO extends BaseDAO {
         }
     }
 
+    public ArrayList<Customer> getListByPage(ArrayList<Customer> list, int start, int end) {
+        ArrayList<Customer> arrayList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arrayList.add(list.get(i));
+        }
+        return arrayList;
+    }
+
 }

@@ -46,6 +46,12 @@
                     </tr>
                 </table>
             </div>
+            <c:set var="pageNumber" value="${pageNumber}"/>
+            <div class="pagination">
+                <c:forEach begin="${1}" end="${numberOfPages}" var="i">
+                    <a href="CustomerListController?pageNumber=${i}">${i}</a>
+                </c:forEach>
+            </div>
         </div>
     </body>
     <script>

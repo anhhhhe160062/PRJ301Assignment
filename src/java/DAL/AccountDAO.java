@@ -29,7 +29,7 @@ public class AccountDAO extends BaseDAO {
                     + "      ,Password\n"
                     + "      ,Role\n"
                     + "      ,Name\n"
-                    + "      ,DOB\n"
+                    + "      ,CreatedDate\n"
                     + "  FROM Account";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
@@ -40,7 +40,7 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("Password"));
                 a.setRole(rs.getString("Role"));
                 a.setName(rs.getString("Name"));
-                a.setDOB(rs.getDate("DOB"));
+                a.setCreatedDate(rs.getDate("CreatedDate"));
                 accounts.add(a);
             }
         } catch (SQLException ex) {
@@ -63,7 +63,7 @@ public class AccountDAO extends BaseDAO {
             statement.setString(2, a.getPassword());
             statement.setString(3, a.getRole());
             statement.setString(4, a.getName());
-            statement.setDate(5, a.getDOB());
+            statement.setDate(5, a.getCreatedDate());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,14 +77,14 @@ public class AccountDAO extends BaseDAO {
                     + "Password = ?,\n"
                     + "Role = ?,\n"
                     + "Name = ?,\n"
-                    + "DOB = ?\n"
+                    + "CreatedDate = ?\n"
                     + "WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, a.getUserName());
             statement.setString(2, a.getPassword());
             statement.setString(3, a.getRole());
             statement.setString(4, a.getName());
-            statement.setDate(5, a.getDOB());
+            statement.setDate(5, a.getCreatedDate());
             statement.setInt(6, a.getId());
             statement.executeUpdate();
         } catch (SQLException ex) {
@@ -101,7 +101,7 @@ public class AccountDAO extends BaseDAO {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Account a = new Account(rs.getInt("id"), rs.getString("UserName"), rs.getString("Password"), rs.getString("Role"), rs.getString("Name"), rs.getDate("DOB"));
+                Account a = new Account(rs.getInt("id"), rs.getString("UserName"), rs.getString("Password"), rs.getString("Role"), rs.getString("Name"), rs.getDate("CreatedDate"));
                 return a;
             }
         } catch (SQLException ex) {
@@ -124,7 +124,7 @@ public class AccountDAO extends BaseDAO {
     public ArrayList<Account> getShopAccountBaseOnDOB(Date fromDate, Date toDate) {
         ArrayList<Account> shopAccounts = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Account WHERE DOB BETWEEN ? AND ? AND Role LIKE 'shop'";
+            String sql = "SELECT * FROM Account WHERE CreatedDate BETWEEN ? AND ? AND Role LIKE 'shop'";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setDate(1, fromDate);
             statement.setDate(2, toDate);
@@ -136,7 +136,7 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("Password"));
                 a.setRole(rs.getString("Role"));
                 a.setName(rs.getString("Name"));
-                a.setDOB(rs.getDate("DOB"));
+                a.setCreatedDate(rs.getDate("CreatedDate"));
                 shopAccounts.add(a);
             }
         } catch (SQLException ex) {
@@ -158,13 +158,21 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("Password"));
                 a.setRole(rs.getString("Role"));
                 a.setName(rs.getString("Name"));
-                a.setDOB(rs.getDate("DOB"));
+                a.setCreatedDate(rs.getDate("CreatedDate"));
                 shopAccounts.add(a);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return shopAccounts;
+    }
+
+    public ArrayList<Account> getListByPage(ArrayList<Account> list, int start, int end) {
+        ArrayList<Account> arrayList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arrayList.add(list.get(i));
+        }
+        return arrayList;
     }
 
 }

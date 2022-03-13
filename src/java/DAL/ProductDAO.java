@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Hai Anh
  */
-public class ProductDAO extends BaseDAO{
+public class ProductDAO extends BaseDAO {
 
     @Override
     public ArrayList<Product> getAll() {
@@ -94,5 +94,13 @@ public class ProductDAO extends BaseDAO{
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public ArrayList<Product> getListByPage(ArrayList<Product> list, int start, int end) {
+        ArrayList<Product> arrayList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arrayList.add(list.get(i));
+        }
+        return arrayList;
     }
 }

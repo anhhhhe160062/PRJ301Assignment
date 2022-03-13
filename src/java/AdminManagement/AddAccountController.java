@@ -37,16 +37,17 @@ public class AddAccountController extends HttpServlet {
         String Password = request.getParameter("Password");
         String Role = request.getParameter("Role");
         String Name = request.getParameter("Name");
-        String DOB = request.getParameter("DOB");
+        String CreatedDate = request.getParameter("CreatedDate");
 
-        Date date = java.sql.Date.valueOf(DOB);
+        Date date = java.sql.Date.valueOf(CreatedDate);
 
         AccountDAO db = new AccountDAO();
         Account a = new Account(userName, Password, Role, Name, date);
 
 //        PrintWriter out = response.getWriter();
-//        out.println(a);
+//        out.println(CreatedDate);
         db.insertAccount(a);
+        
         response.sendRedirect("AccountListServlet");
     }
 

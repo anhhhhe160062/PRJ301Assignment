@@ -6,6 +6,7 @@
 package ProductController;
 
 import DAL.ProductDAO;
+import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -41,7 +42,29 @@ public class ProductListController extends HttpServlet {
 //        for(int i = 0; i < list.size(); i++){
 //            out.println("abcd");
 //        }
-        request.setAttribute("productList", list);
+        //generate sample data
+//        for (int i = 6; i < 200; i++) {
+//            Product p = new Product(i, "ProductNo" + i);
+//            productDB.insertProduct(p);
+//        }
+
+        int pageNumber, numberPerPage = 10;
+        int size = list.size();
+        int numberOfPages = (size % numberPerPage == 0 ? (size / numberPerPage) : ((size / numberPerPage) + 1));
+        String xPageNumber = request.getParameter("pageNumber");
+        if (xPageNumber == null) {
+            pageNumber = 1;
+        } else {
+            pageNumber = Integer.parseInt(xPageNumber);
+        }
+        int start, end;
+        start = (pageNumber - 1) * numberPerPage;
+        end = Math.min(pageNumber * numberPerPage, size);
+        ArrayList<Product> productListByPage = productDB.getListByPage(list, start, end);
+
+        request.setAttribute("productList", productListByPage);
+        request.setAttribute("pageNumber", pageNumber);
+        request.setAttribute("numberOfPages", numberOfPages);
         request.getRequestDispatcher("Product.jsp").forward(request, response);
     }
 

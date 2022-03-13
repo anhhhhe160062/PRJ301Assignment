@@ -6,6 +6,7 @@
 package AdminManagement;
 
 import DAL.AccountDAO;
+import Model.Account;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -37,7 +38,24 @@ public class AccountListController extends HttpServlet {
 //        for(int i = 0; i < list.size(); i++){
 //            out.println(list.get(i));
 //        }
-        request.setAttribute("accountList", list);
+
+        int pageNumber, numberPerPage = 10;
+        int size = list.size();
+        int numberOfPages = (size % numberPerPage == 0 ? (size / numberPerPage) : ((size / numberPerPage) + 1));
+        String xPageNumber = request.getParameter("pageNumber");
+        if (xPageNumber == null) {
+            pageNumber = 1;
+        } else {
+            pageNumber = Integer.parseInt(xPageNumber);
+        }
+        int start, end;
+        start = (pageNumber - 1) * numberPerPage;
+        end = Math.min(pageNumber * numberPerPage, size);
+        ArrayList<Account> accountListByPage = accountdb.getListByPage(list, start, end);
+
+        request.setAttribute("accountList", accountListByPage);
+        request.setAttribute("pageNumber", pageNumber);
+        request.setAttribute("numberOfPages", numberOfPages);
         request.getRequestDispatcher("AdminManagement.jsp").forward(request, response);
     }
 

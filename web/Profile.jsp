@@ -24,7 +24,7 @@
                 <h1>${sessionScope.account.password}</h1>
                 <h1>${sessionScope.account.role}</h1>
                 <h1>${sessionScope.account.name}</h1>
-                <h1>${sessionScope.account.DOB}</h1>
+                <h1>${sessionScope.account.createdDate}</h1>
             </div>
         </div>
     </body>

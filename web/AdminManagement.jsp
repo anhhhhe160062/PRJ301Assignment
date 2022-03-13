@@ -27,7 +27,7 @@
                         <th>Password</th>
                         <th>Role</th>
                         <th>Name</th>
-                        <th>DOB</th>
+                        <th>CreatedDate</th>
                     </tr>
                     <c:forEach items="${accountList}" var="account">
                         <tr>
@@ -36,7 +36,7 @@
                             <td>${account.password}</td>
                             <td>${account.role}</td>
                             <td>${account.name}</td>
-                            <td>${account.DOB}</td>
+                            <td>${account.createdDate}</td>
                             <td>
                                 <a href="#" onClick="getUpdateLink(${account.id})">Update</a>
                                 <a href="#" onClick="showMess(${account.id})">Delete</a>
@@ -47,6 +47,12 @@
                         <td><a href="AddAccount.jsp">CREATE</a></td>
                     </tr>
                 </table>
+            </div>
+            <c:set var="pageNumber" value="${pageNumber}"/>
+            <div class="pagination">
+                <c:forEach begin="${1}" end="${numberOfPages}" var="i">
+                    <a href="AccountListServlet?pageNumber=${i}">${i}</a>
+                </c:forEach>
             </div>
         </div>
     </body>

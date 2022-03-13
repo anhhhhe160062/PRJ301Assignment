@@ -45,8 +45,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>DOB:</td>
-                            <td><input type="date" name="DOB"</td>
+                            <td>CreatedDate:</td>
+                            <td><input type="date" name="CreatedDate"</td>
                         </tr>
                         <tr>
                             <td><button type="submit">Create</button></td>
