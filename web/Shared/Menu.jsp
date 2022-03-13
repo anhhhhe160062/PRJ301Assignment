@@ -18,6 +18,7 @@
             <a href="AccountListServlet">Admin</a>
             <a href="CustomerListController">Customer</a>
             <a href="Statistic.jsp">Statistics</a>
+            <a href="LogoutServlet">Logout</a>
         </nav>
     </body>
 </html>
