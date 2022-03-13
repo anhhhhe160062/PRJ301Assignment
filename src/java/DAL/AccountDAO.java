@@ -121,7 +121,7 @@ public class AccountDAO extends BaseDAO {
         }
     }
 
-    public ArrayList<Account> getShopAccountBaseOnDOB(Date fromDate, Date toDate) {
+    public ArrayList<Account> getShopAccountBaseOnCreatedDate(Date fromDate, Date toDate) {
         ArrayList<Account> shopAccounts = new ArrayList<>();
         try {
             String sql = "SELECT * FROM Account WHERE CreatedDate BETWEEN ? AND ? AND Role LIKE 'shop'";

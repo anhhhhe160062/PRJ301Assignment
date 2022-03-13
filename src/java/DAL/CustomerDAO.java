@@ -114,6 +114,28 @@ public class CustomerDAO extends BaseDAO {
         }
     }
 
+    public ArrayList<Customer> getShopReport(int shopID) {
+        ArrayList<Customer> customers = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Customer WHERE ShopID = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, shopID);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Customer c = new Customer();
+                c.setCustomerID(rs.getInt("CustomerID"));
+                c.setName(rs.getString("Full Name"));
+                c.setPhoneNumber(rs.getInt("Phone Number"));
+                c.setPurchaseID(rs.getInt("PurchaseID"));
+                c.setShopID(rs.getInt("ShopID"));
+                customers.add(c);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return customers;
+    }
+
     public ArrayList<Customer> getListByPage(ArrayList<Customer> list, int start, int end) {
         ArrayList<Customer> arrayList = new ArrayList<>();
         for (int i = start; i < end; i++) {

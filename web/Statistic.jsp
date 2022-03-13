@@ -4,6 +4,7 @@
     Author     : Hai Anh
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,25 +20,38 @@
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
                 <h1>Statistics</h1>
-                <form action="ExcelExportServlet" method="post">
-                    <table>
-                        <tr>
-                            <td>From Date</td>
-                            <td>
-                                <input type="date" name="fromDate">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>To Date</td>
-                            <td>
-                                <input type="date" name="toDate">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Export xls</button></td>
-                        </tr>
-                    </table>
-                </form>
+                <c:if test="${sessionScope.account.role == 'Admin'}">
+                    <form action="AdminExcelExportServlet" method="post">
+                        <table>
+                            <label><h2>Export accounts created</h2></label>
+                            <tr>
+                                <td>From Date</td>
+                                <td>
+                                    <input type="date" name="fromDate">
+                                </td>
+                                <td>To Date</td>
+                                <td>
+                                    <input type="date" name="toDate">
+                                </td>
+                                <td><button type="submit">Export xls</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </c:if>
+                <c:if test="${sessionScope.account.role == 'shop'}">
+                    <form action="ShopExcelExportServlet" method="post">
+                        <table>
+                            <label><h2>Export shop report</h2></label>
+                            <tr>
+                                <td>Shop ID</td>
+                                <td>
+                                    <input type="text" name="shopID">
+                                </td>
+                                <td><button type="submit">Export xls</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </c:if>
             </div>
         </div>
     </body>

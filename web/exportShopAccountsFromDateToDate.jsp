@@ -21,7 +21,7 @@
                 <td>Password</td>
                 <td>Role</td>
                 <td>Name</td>
-                <td>DOB</td>
+                <td>Created Date</td>
             </tr>
             <%
                 response.setContentType("application/vnd.ms-excel");
@@ -36,7 +36,7 @@
                 <td><%=a.getPassword()%></td>
                 <td><%=a.getRole()%></td>
                 <td><%=a.getName()%></td>
-                <td><%=a.getDOB()%></td>
+                <td><%=a.getCreatedDate()%></td>
             </tr>
             <% }
                 }%>

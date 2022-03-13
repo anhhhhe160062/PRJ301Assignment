@@ -5,13 +5,11 @@
  */
 package StatisticExport;
 
-import DAL.AccountDAO;
-import Model.Account;
+import DAL.CustomerDAO;
+import Model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.ArrayList;
-import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Hai Anh
  */
-public class ExcelExportServlet extends HttpServlet {
+public class ShopExcelExportServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,21 +32,13 @@ public class ExcelExportServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fromDate = request.getParameter("fromDate");
-        String toDate = request.getParameter("toDate");
-
-        Date dateFrom = java.sql.Date.valueOf(fromDate);
-        Date dateTo = java.sql.Date.valueOf(toDate);
-
-        AccountDAO db = new AccountDAO();
-        ArrayList<Account> list = db.getShopAccountBaseOnDOB(dateFrom, dateTo);
-
-        PrintWriter out = response.getWriter();
-        out.println("dateFrom: " + dateFrom + " dateTo: " + dateTo);
-        out.println(list);
+        String shopID = request.getParameter("shopID");
         
-        request.setAttribute("shopAccounts", list);
-        request.getRequestDispatcher("export.jsp").forward(request, response);
+        CustomerDAO db = new CustomerDAO();
+        ArrayList<Customer> list = db.getShopReport(Integer.parseInt(shopID));
+        
+        request.setAttribute("customers", list);
+        request.getRequestDispatcher("exportShopReport.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
