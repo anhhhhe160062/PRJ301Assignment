@@ -22,7 +22,7 @@
                 <h1>Statistics</h1>
                 <c:if test="${sessionScope.account.role == 'Admin'}">
                     <div class="form-box">
-                        <form action="AdminExcelExportServlet" method="post">
+                        <form action="ExcelExportServlet" method="post">
                             <div class="text-field">
                                 <h2>Export accounts created</h2>
                                 <label>From Date</label>
