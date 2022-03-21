@@ -32,9 +32,12 @@ public class AddProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String productName = request.getParameter("productName");
+        String price = request.getParameter("price");
+        String category = request.getParameter("category");
+        String description = request.getParameter("description");
 
         ProductDAO db = new ProductDAO();
-        Product p = new Product(productName);
+        Product p = new Product(productName,Integer.parseInt(price), category, description);
 
 //        PrintWriter out = response.getWriter();
 //        out.println(a);

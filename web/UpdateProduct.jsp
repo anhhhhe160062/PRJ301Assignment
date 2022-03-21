@@ -21,11 +21,33 @@
                 <div class="form-box">
                     <form action="UpdateProductController" method="post">
                         <div class="text-field">
-                            <label>ProductID</label>
-                            <input value="${product.productID}" type="text" name="productID" readonly>
-                            <label>Product Name</label>
-                            <input value="${product.productName}" type="text" name="productName">
-                            <td><button type="submit">Update</button></td>
+                            <table class="content-table">
+                                <tr class="table-data profile-data">
+                                    <td><label>ProductID</label></td>
+                                    <td><input value="${product.productID}" type="text" name="productID" readonly></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Product Name</label></td>
+                                    <td><input value="${product.productName}" type="text" name="productName"></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Price</label></td>
+                                    <td><input value="${product.price}" type="text" name="price"></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Category</label></td>
+                                    <td><input value="${product.category}" type="text" name="category"></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Description</label></td>
+                                    <td><input value="${product.description}" type="text" name="description"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="submit">Update</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </form> 
                 </div>

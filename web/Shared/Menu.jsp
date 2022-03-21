@@ -67,12 +67,10 @@
                     <i class="fa-solid fa-id-card"></i>
                     <a href="Profile.jsp">Profile</a>
                 </li>
-                <c:if test="${sessionScope.account.role == 'shop'}">
-                    <li class="nav-bar-li" >
-                        <i class="fa-solid fa-box"></i>
-                        <a href="ProductListController">Product</a>
-                    </li>
-                </c:if>
+                <li class="nav-bar-li" >
+                    <i class="fa-solid fa-box"></i>
+                    <a href="ProductListController">Product</a>
+                </li>
                 <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-bar-li" >
                         <i class="fa fa-user icons"></i>

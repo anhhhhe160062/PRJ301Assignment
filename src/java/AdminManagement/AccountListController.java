@@ -8,11 +8,13 @@ package AdminManagement;
 import DAL.AccountDAO;
 import Model.Account;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,6 +33,14 @@ public class AccountListController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //authentication requirement
+        HttpSession session = request.getSession();
+        if(session.getAttribute("account") == null){
+            PrintWriter out = response.getWriter();
+            out.print("abcd");
+            request.getRequestDispatcher("index.html").forward(request, response);
+        }
+        
         AccountDAO accountdb = new AccountDAO();
         ArrayList list = accountdb.getAll();
 
@@ -38,7 +48,6 @@ public class AccountListController extends HttpServlet {
 //        for(int i = 0; i < list.size(); i++){
 //            out.println(list.get(i));
 //        }
-
         int pageNumber, numberPerPage = 10;
         int size = list.size();
         int numberOfPages = (size % numberPerPage == 0 ? (size / numberPerPage) : ((size / numberPerPage) + 1));

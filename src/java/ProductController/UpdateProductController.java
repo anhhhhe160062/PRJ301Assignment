@@ -80,12 +80,17 @@ public class UpdateProductController extends HttpServlet {
             throws ServletException, IOException {
         String productID = request.getParameter("productID");
         String productName = request.getParameter("productName");
+        String price = request.getParameter("price");
+        String category = request.getParameter("category");
+        String description = request.getParameter("description");
 
-        Product p = new Product(Integer.parseInt(productID), productName);
+        
+        Product p = new Product(Integer.parseInt(productID), productName, Integer.parseInt(price), category, description);
         ProductDAO db = new ProductDAO();
         db.updateProduct(p);
 //        PrintWriter out = response.getWriter();
-//        out.print(c);
+//        out.print(p);
+//        out.print(productID + " " + productName + " " + price + " " + category + " " + description);
         response.sendRedirect("ProductListController");
     }
 

@@ -33,17 +33,19 @@
                         <th>Action</th>
                     </tr>
                     <c:forEach items="${customerList}" var="customer">
-                        <tr class="table-data">
-                            <td>${customer.customerID}</td>
-                            <td>${customer.name}</td>
-                            <td>${customer.phoneNumber}</td>
-                            <td>${customer.purchaseID}</td>
-                            <td>${customer.shopID}</td>
-                            <td>
-                                <a href="#" onClick="getUpdateLink(${customer.customerID})"><i class="fa-solid fa-pen-clip"></i></a>
-                                <a href="#" onClick="showMess(${customer.customerID})"><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                        <c:if test="${sessionScope.account.id == customer.shopID}">
+                            <tr class="table-data">
+                                <td>${customer.customerID}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.phoneNumber}</td>
+                                <td>${customer.purchaseID}</td>
+                                <td>${customer.shopID}</td>
+                                <td>
+                                    <a href="#" onClick="getUpdateLink(${customer.customerID})"><i class="fa-solid fa-pen-clip"></i></a>
+                                    <a href="#" onClick="showMess(${customer.customerID})"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </c:if>
                     </c:forEach>
                 </table>
             </div>

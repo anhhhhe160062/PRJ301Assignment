@@ -21,12 +21,32 @@
                 <div class="form-box">
                     <form action="AddProductController" method="get">
                         <div class="text-field">
-                            <label>
-                                Product Name
-                            </label>
-                            <input type="text" name="productName">
-                            <button type="submit">Create</button>
+                            <table>
+
+                                <tr class="table-data profile-data">
+                                    <td><label>Product Name</label></td>
+                                    <td><input type="text" name="productName"></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Price</label></td>
+                                    <td><input type="text" name="price"></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Category</label></td>
+                                    <td><input type="text" name="category"></td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td><label>Description</label></td>
+                                    <td><input type="text" name="description"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="submit">Create</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+                        </table>
                     </form>  
                 </div>
             </div>

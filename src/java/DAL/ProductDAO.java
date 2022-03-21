@@ -25,6 +25,9 @@ public class ProductDAO extends BaseDAO {
         try {
             String sql = "SELECT ProductID\n"
                     + "      ,[Product Name]\n"
+                    + "     , Price\n"
+                    + "     , CategoryID\n"
+                    + "     , Description\n"
                     + "  FROM Product";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
@@ -32,6 +35,9 @@ public class ProductDAO extends BaseDAO {
                 Product p = new Product();
                 p.setProductID(rs.getInt("ProductID"));
                 p.setProductName(rs.getString("Product Name"));
+                p.setPrice(rs.getInt("Price"));
+                p.setCategory(rs.getString("CategoryID"));
+                p.setDescription(rs.getString("Description"));
                 product.add(p);
             }
         } catch (SQLException ex) {
@@ -44,9 +50,12 @@ public class ProductDAO extends BaseDAO {
         try {
             String sql = "INSERT INTO Product\n"
                     + "     VALUES\n"
-                    + "     (?)";
+                    + "     (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, c.getProductName());
+            statement.setInt(2, c.getPrice());
+            statement.setString(3, c.getCategory());
+            statement.setString(4, c.getDescription());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,10 +66,16 @@ public class ProductDAO extends BaseDAO {
         try {
             String sql = "UPDATE Product SET "
                     + "[Product Name] = ?\n"
+                    + ",Price = ?\n"
+                    + ",CategoryID = ?\n"
+                    + ",Description = ?\n"
                     + "WHERE ProductID = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, p.getProductName());
-            statement.setInt(2, p.getProductID());
+            statement.setInt(2, p.getPrice());
+            statement.setString(3, p.getCategory());
+            statement.setString(4, p.getDescription());
+            statement.setInt(5, p.getProductID());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,7 +91,7 @@ public class ProductDAO extends BaseDAO {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Product p = new Product(rs.getInt("ProductID"), rs.getString("Product Name"));
+                Product p = new Product(rs.getInt("ProductID"), rs.getString("Product Name"), rs.getInt("Price"), rs.getString("CategoryID"), rs.getString("Description"));
                 return p;
             }
         } catch (SQLException ex) {

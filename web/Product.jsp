@@ -20,23 +20,35 @@
             <jsp:include page="Shared/Header.jsp"/>
             <div class="container">
                 <h1>Product Management</h1>
-                <div class="createLink">
-                    <a href="AddProduct.jsp">Create</a>
-                </div>
+                <c:if test="${sessionScope.account.role == 'Admin'}">
+                    <div class="createLink">
+                        <a href="AddProduct.jsp">Create</a>
+                    </div>
+                </c:if>
                 <table class="content-table">
                     <tr class="table-header">
                         <th>ProductID</th>
                         <th>Product Name</th>
-                        <th>Action</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                            <c:if test="${sessionScope.account.role == 'Admin'}">
+                            <th>Action</th>
+                            </c:if>
                     </tr>
                     <c:forEach items="${productList}" var="product">
                         <tr class="table-data">
                             <td>${product.productID}</td>
                             <td>${product.productName}</td>
-                            <td>
-                                <a href="#" onClick="getUpdateLink(${product.productID})"><i class="fa-solid fa-pen-clip"></i></a>
-                                <a href="#" onClick="showMess(${product.productID})"><i class="fa-solid fa-trash"></i></a>
-                            </td>
+                            <td>${product.price}</td>
+                            <td>${product.category}</td>
+                            <td>${product.description}</td>
+                            <c:if test="${sessionScope.account.role == 'Admin'}">
+                                <td>
+                                    <a href="#" onClick="getUpdateLink(${product.productID})"><i class="fa-solid fa-pen-clip"></i></a>
+                                    <a href="#" onClick="showMess(${product.productID})"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                 </table>
