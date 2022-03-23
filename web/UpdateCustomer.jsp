@@ -21,17 +21,53 @@
                 <div class="form-box">
                     <form action="UpdateCustomerController" method="post">
                         <div class="text-field">
-                            <label>ID:</label>
-                            <input value="${customer.customerID}" type="text" name="customerID" readonly>
-                            <label>Full Name:</label>
-                            <input value="${customer.name}" type="text" name="Name">
-                            <label>Phone number:</label>
-                            <input value="${customer.phoneNumber}" type="" name="phoneNumber" >
-                            <label>PurchaseID:</label>
-                            <input value="${customer.purchaseID}" type="text" name="purchaseID" readonly>
-                            <label>ShopID</label>
-                            <input value="${customer.shopID}" type="text" name="shopID" readonly>
-                            <button type="submit">Update</button>
+                            <table class="content-table">
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>ID:</label>
+                                    </td>
+                                    <td>
+                                        <input value="${customer.customerID}" type="text" name="customerID" readonly>
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Full Name:</label>
+                                    </td>
+                                    <td>
+                                        <input value="${customer.name}" type="text" name="Name">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Phone number:</label>
+                                    </td>
+                                    <td>
+                                        <input value="${customer.phoneNumber}" type="" name="phoneNumber" >
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>PurchaseID:</label>
+                                    </td>
+                                    <td>
+                                        <input value="${customer.purchaseID}" type="text" name="purchaseID" readonly>
+                                    </td>
+                                </tr>     
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>ShopID</label>
+                                    </td>
+                                    <td>
+                                        <input value="${customer.shopID}" type="text" name="shopID" readonly>
+                                    </td>
+                                </tr>  
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <button type="submit">Update</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </form>    
                 </div>

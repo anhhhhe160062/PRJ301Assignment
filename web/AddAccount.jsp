@@ -21,17 +21,53 @@
                 <div class="form-box">
                     <form action="AddAccountController" method="get">
                         <div class="text-field">
-                            <label>UserName:</label>
-                            <input type="text" name="userName">
-                            <label>Password:</label>
-                            <input type="text" name="Password">
-                            <label>Role:</label>
-                            <input type="text" name="Role">
-                            <label>Name:</label>
-                            <input type="text" name="Name">
-                            <label>CreatedDate:</label>
-                            <input type="date" name="CreatedDate"/>
-                            <button type="submit">Create</button>
+                            <table class="content-table">
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>UserName:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="userName">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Password:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Password">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Role:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Role">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Name">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>CreatedDate:</label>
+                                    </td>
+                                    <td>
+                                        <input type="date" name="CreatedDate"/>
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <button type="submit">Create</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </form>
                 </div>

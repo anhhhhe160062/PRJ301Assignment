@@ -21,20 +21,62 @@
                 <div class="form-box">
                     <form action="UpdateAccountController" method="post">
                         <div class="text-field">
-                            <label>ID</label>
-                            <input value="${account.id}" type="text" name="id" readonly>
-                            <label>Username</label>
-                            <input value="${account.userName}" type="text" name="username">
-                            <label>Password</label>
-                            <input value="${account.password}" type="text" name="password">
-                            <label>Role</label>
-                            <input type="radio" name="role" value="Admin" ${account.role.equals("Admin")?"checked":""}>Admin
-                            <input type="radio" name="role" value="Shop" ${!account.role.equals("Admin")?"checked":""}>Shop
-                            <label>Name</label>
-                            <input value="${account.name}" type="text" name="name">
-                            <label>CreatedDate</label>
-                            <input value="${account.createdDate}" type="date" name="createdDate">
-                            <button type="submit">Update</button>
+                            <table class="content-table">
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>ID</label>
+                                    </td>
+                                    <td>
+                                        <input value="${account.id}" type="text" name="id" readonly>
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Username</label>
+                                    </td>
+                                    <td>
+                                        <input value="${account.userName}" type="text" name="username">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Password</label>
+                                    </td>
+                                    <td>
+                                        <input value="${account.password}" type="text" name="password">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Role</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="role" value="Admin" ${account.role.equals("Admin")?"checked":""}>Admin
+                                        <input type="radio" name="role" value="Shop" ${!account.role.equals("Admin")?"checked":""}>Shop
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Name</label>
+                                    </td>
+                                    <td>
+                                        <input value="${account.name}" type="text" name="name">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>CreatedDate</label>
+                                    </td>
+                                    <td>
+                                        <input value="${account.createdDate}" type="date" name="createdDate">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <button type="submit">Update</button>                
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </form>
                 </div>

@@ -22,19 +22,49 @@
                 <div class="form-box">
                     <form action="AddCustomerController" method="get">
                         <div class="text-field">
-                            <label>Full Name:</label>
-                            <input type="text" name="Name">
-                            <label>Phone number:</label>
-                            <input type="text" name="phoneNumber">
-                            <label>PurchaseID:</label>
-                            <input value="${latestPurchase.purchaseID}" type="text" name="purchaseID" readonly>
-                            <label>ShopID</label>
-                            <select name="shopID">
-                                <c:forEach items="${shopAccounts}" var="shopAccounts">
-                                    <option value="${shopAccounts.id}">${shopAccounts.id}</option>
-                                </c:forEach>
-                            </select>
-                            <button type="submit">Create</button>
+                            <table class="content-table">
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Full Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Name">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>Phone number:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="phoneNumber">
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>PurchaseID:</label>
+                                    </td>
+                                    <td>
+                                        <input value="${latestPurchase.purchaseID}" type="text" name="purchaseID" readonly>
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <label>ShopID</label>
+                                    </td>
+                                    <td>
+                                        <select name="shopID">
+                                            <c:forEach items="${shopAccounts}" var="shopAccounts">
+                                                <option value="${shopAccounts.id}">${shopAccounts.id}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="table-data profile-data">
+                                    <td>
+                                        <button type="submit">Create</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </form>   
                 </div>

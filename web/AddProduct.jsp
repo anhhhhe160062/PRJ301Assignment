@@ -21,8 +21,7 @@
                 <div class="form-box">
                     <form action="AddProductController" method="get">
                         <div class="text-field">
-                            <table>
-
+                            <table class="content-table">
                                 <tr class="table-data profile-data">
                                     <td><label>Product Name</label></td>
                                     <td><input type="text" name="productName"></td>
@@ -46,7 +45,6 @@
                                 </tr>
                             </table>
                         </div>
-                        </table>
                     </form>  
                 </div>
             </div>
